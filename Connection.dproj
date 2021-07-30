@@ -271,8 +271,8 @@
         </DCCReference>
         <DCCReference Include="src\Model\Components\Query\Model.Components.Query.Interfaces.pas"/>
         <DCCReference Include="src\Model\Components\Query\Model.Components.Query.FireDac.pas"/>
-        <DCCReference Include="src\Model\Components\Connection\Model.Components.Connection.Interfaces.pas"/>
         <DCCReference Include="src\Model\Components\Connection\Model.Components.Connection.FireDac.pas"/>
+        <DCCReference Include="src\Model\Components\Query\Model.Components.Query.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

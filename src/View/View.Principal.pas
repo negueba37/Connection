@@ -6,7 +6,7 @@ uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Memo.Types,
   FMX.StdCtrls, FMX.Controls.Presentation, FMX.ScrollBox, FMX.Memo,
-  Model.Components.Query.FireDac, Model.Components.Query.Interfaces;
+  Model.Components.Query, Model.Components.Query.Interfaces;
 
 
 type
@@ -34,6 +34,7 @@ procedure TfrmPrincipal.Button1Click(Sender: TObject);
 begin
   FQuery
   .Close
+  .SQLClear
   .SQLAdd('SELECT * from CAD_CLIENTES')
   .Open;
 
@@ -50,6 +51,7 @@ procedure TfrmPrincipal.Button2Click(Sender: TObject);
 begin
    FQuery2
   .Close
+  .SQLClear
   .SQLAdd('SELECT * from CAD_CLIENTES_CONTATOS')
   .Open;
 
@@ -64,8 +66,8 @@ end;
 
 procedure TfrmPrincipal.FormCreate(Sender: TObject);
 begin
-  FQuery := TModelComponentsQueryFireDac.New;
-  FQuery2 := TModelComponentsQueryFireDac.New;
+  FQuery := TModelComponentsQuery.New.Query;
+  FQuery2 := TModelComponentsQuery.New.Query;
 end;
 
 end.

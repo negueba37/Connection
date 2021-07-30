@@ -28,7 +28,6 @@ interface
   TModelComponentsQueryFireDac = class(TInterfacedObject,IModelComponentsQueryInterfaces)
     private
     FQuery:TFDQuery;
-    FConnection:TFDConnection;
     public
     constructor Create;
     destructor Destroy;override;
@@ -62,9 +61,8 @@ end;
 
 constructor TModelComponentsQueryFireDac.Create;
 begin
-  FConnection := TModelComponentsConnectionFiredac.Connection;
   FQuery := TFDQuery.Create(nil);
-  FQuery.Connection := FConnection;
+  FQuery.Connection := TModelComponentsConnectionFiredac.Connection;
 end;
 
 function TModelComponentsQueryFireDac.DataSet: TDataSet;
@@ -75,7 +73,6 @@ end;
 destructor TModelComponentsQueryFireDac.Destroy;
 begin
   FQuery.Free;
-  TModelComponentsConnectionFiredac.FreeConnection;
   inherited;
 end;
 

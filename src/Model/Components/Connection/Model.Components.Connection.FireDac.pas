@@ -27,12 +27,12 @@ uses  FireDAC.Stan.Intf,
   type
   TModelComponentsConnectionFiredac = class
     public
-    class Var FConnection :TFDConnection;
+
     class function Connection:TFDConnection;
-    class procedure FreeConnection;
+
   end;
 implementation
-
+    Var FConnection :TFDConnection;
 { TModelComponentsConnectionFiredac }
 
 class function TModelComponentsConnectionFiredac.Connection: TFDConnection;
@@ -45,16 +45,17 @@ begin
     FConnection.LoginPrompt     := False;
     FConnection.Params.Database := 'C:\Projetos\ERP\Banco\ERP.FDB';
     FConnection.Params.UserName := 'SYSDBA';
-    FConnection.Params.Password := '@CNE2021';
+    FConnection.Params.Password := '';
     FConnection.Connected       := True;
   end;
   Result := FConnection;
 end;
+Initialization
 
-class procedure TModelComponentsConnectionFiredac.FreeConnection;
-begin
+Finalization;
   if Assigned(FConnection) then
     FConnection.Free;
-end;
-
 end.
+
+
+
